@@ -51,3 +51,68 @@ Visualization (matplotlib)
 | `gradient_descent(...)`       | Full training loop            | Initializes parameters, trains the network for a fixed number of iterations using forward and backward propagation, updating weights each time. Prints progress every 10 iterations.                    |
 | `make_predictions(...)`       | Inference                     | Applies forward propagation using trained weights to generate predictions for given input `X`.                                                                                                          |
 | `test_prediction(index, ...)` | Visual check                  | Displays a training image at a specific index and compares the model's prediction with the true label. Helpful for manual verification of model performance.                                            |
+
+
+
+# Learning outcomes
+
+
+**Neural Network Fundamentals**
+
+* Understand how to initialize weights (`W`) and biases (`b`) for a neural network.
+* Learn the structure of a simple **2-layer neural network**:
+
+  * Input layer → Hidden layer (ReLU) → Output layer (Softmax).
+
+---
+
+**Data Preprocessing**
+
+* How to normalize pixel data by scaling to the range \[0, 1].
+* How to split data into **training** and **development (validation)** sets.
+* How to reshape and transpose datasets to fit matrix operations.
+
+---
+
+**Activation Functions**
+
+* Apply and understand **ReLU** activation for hidden layers.
+* Use **Softmax** for multi-class probability outputs in the final layer.
+
+---
+
+**Forward and Backward Propagation**
+
+* Implement forward propagation using matrix operations.
+* Compute gradients using backpropagation:
+
+  * Chain rule
+  * ReLU derivative
+  * Softmax + cross-entropy gradient
+
+---
+
+**Training and Optimization**
+
+* Perform **gradient descent** to update weights and biases.
+* Understand the role of the **learning rate (`alpha`)** and **iterations**.
+* Track performance during training using **accuracy and predictions**.
+
+---
+
+**Model Evaluation and Prediction**
+
+* Use `argmax` to extract predicted classes from softmax outputs.
+* Calculate **model accuracy** on the training/dev set.
+* Visualize predictions using `matplotlib` to inspect model behavior.
+
+---
+
+**Miscellaneous Skills**
+
+* Implement **one-hot encoding** for class labels.
+* Handle NumPy broadcasting and matrix dimensions effectively.
+* Build an end-to-end pipeline from data loading to prediction.
+
+
+
