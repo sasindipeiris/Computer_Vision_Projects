@@ -4,8 +4,9 @@ This notebook presents a comprehensive machine learning pipeline to solve the Hi
 
 Large and complicated datasets like these are where deep learning excels. In this notebook, we'll build a Wide and Deep neural network to determine whether an observed particle collision produced a Higgs boson or not.
 
- 
-**---**
+
+---
+
 # Libraries used
 
 | **Library**                      | **Purpose / Description**                                                                              |
@@ -19,7 +20,7 @@ Large and complicated datasets like these are where deep learning excels. In thi
 | `tensorflow.io.FixedLenFeature`  | Used to define features with fixed-length for reading TFRecord files.                                  |
 | `tf.data.experimental.AUTOTUNE`  | Optimizes performance of data pipelines by automatically tuning the parallelism.                       |
 
-**---**
+---
 
 # TPU Detection
 
@@ -29,7 +30,7 @@ The notebook intelligently detects the presence of a TPU and, if available, init
 
 By leveraging TPUs, the notebook ensures efficient resource utilization and enhanced performance, making it well-suited for computationally intensive tasks such as particle classification in the Higgs Boson challenge.
 
-**---**
+---
 
 # Dataset loading
 
@@ -39,7 +40,7 @@ The dataset has been encoded in a binary file format called TFRecords. These two
 
 These two functions are part of a **data input pipeline** for TensorFlow models, designed to load and decode data stored in the **TFRecord** format — a highly efficient binary format commonly used for large-scale machine learning datasets.
 
----
+
 
  **`make_decoder` – Feature Parser Factory**
 
@@ -60,7 +61,6 @@ The `make_decoder` function **creates and returns a decoder function** that can 
 * It **decouples** TFRecord decoding logic from dataset loading, making it reusable and modular.
 * Ensures correct formatting and type casting of data before feeding it into a model.
 
----
 
 **`load_dataset` – TFRecord Loader with Preprocessing**
 
@@ -78,7 +78,7 @@ The `load_dataset` function loads one or more TFRecord files into a TensorFlow `
 * It uses TensorFlow’s `AUTOTUNE` feature to automatically optimize data loading performance.
 * Setting `ordered=False` disables deterministic order to **speed up training** by allowing for asynchronous, non-ordered reads (helpful in large datasets).
 
----
+
 
  🧾 Overall Use Case
 
@@ -141,7 +141,7 @@ These functions are typically used together in a TensorFlow training pipeline:
 * If your TFRecord contains images, audio, or multi-dimensional tensors, the `feature_description` will change accordingly.
 * For categorical data or text, you may use `tf.int64`, `tf.string`, or even `VarLenFeature`.
 
-**---**
+---
 
 dataset_size = 11 million (total number of examples).
 
@@ -164,7 +164,7 @@ steps_per_execution = 256 improves TPU/GPU performance by reducing Python intera
 | **.batch(batch\_size)** | ✅ Yes                                               | ✅ Yes                                               | Groups examples into mini-batches for efficient training and evaluation.                                       |
 | **.prefetch(AUTO)**     | ✅ Yes                                               | ✅ Yes                                               | Overlaps data preparation and model execution, improving training speed and hardware utilization.              |
 
-**---**
+---
 
 # Wide and Deep Model Architecture
 
@@ -201,7 +201,7 @@ steps_per_execution = 256 improves TPU/GPU performance by reducing Python intera
 | `keras.experimental.WideDeepModel(...)` | Combines `LinearModel` (wide) and `Model` (deep) | Merges memorization (wide) and generalization (deep) capabilities. Proven effective in structured data (e.g., Kaggle tabular tasks). |
 | `activation='sigmoid'`                  | Applies sigmoid to final output                  | Suitable for binary classification, producing output in range (0, 1).                                                                |
 
-**---**
+---
 
 # Training
 
