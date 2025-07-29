@@ -193,12 +193,7 @@ steps_per_execution = 256 improves TPU/GPU performance by reducing Python intera
 | --------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `keras.experimental.WideDeepModel(...)` | Combines `LinearModel` (wide) and `Model` (deep) | Merges memorization (wide) and generalization (deep) capabilities. Proven effective in structured data (e.g., Kaggle tabular tasks). |
 | `activation='sigmoid'`                  | Applies sigmoid to final output                  | Suitable for binary classification, producing output in range (0, 1).                                                                |
-
-
-| **Block**                               | **Wide & Deep Fusion**                           | **Reasoning**                                                                                                                        |
-| --------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
-| `keras.experimental.WideDeepModel(...)` | Combines `LinearModel` (wide) and `Model` (deep) | Merges memorization (wide) and generalization (deep) capabilities. Proven effective in structured data (e.g., Kaggle tabular tasks). |
-| `activation='sigmoid'`                  | Applies sigmoid to final output                  | Suitable for binary classification, producing output in range (0, 1).                                                                |
+                                                         |
 
 ---
 
