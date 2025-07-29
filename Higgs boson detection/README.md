@@ -135,8 +135,7 @@ These functions are typically used together in a TensorFlow training pipeline:
 * Later, you decode it using `tf.io.parse_tensor()` during parsing.
 
 
-
-# 💡 When to Customize This:
+ 💡 When to Customize This:
 
 * If your TFRecord contains images, audio, or multi-dimensional tensors, the `feature_description` will change accordingly.
 * For categorical data or text, you may use `tf.int64`, `tf.string`, or even `VarLenFeature`.
