@@ -4,8 +4,8 @@ This notebook presents a comprehensive machine learning pipeline to solve the Hi
 
 Large and complicated datasets like these are where deep learning excels. In this notebook, we'll build a Wide and Deep neural network to determine whether an observed particle collision produced a Higgs boson or not.
 
- derived from these.
-
+ 
+**---**
 # Libraries used
 
 | **Library**                      | **Purpose / Description**                                                                              |
@@ -19,6 +19,8 @@ Large and complicated datasets like these are where deep learning excels. In thi
 | `tensorflow.io.FixedLenFeature`  | Used to define features with fixed-length for reading TFRecord files.                                  |
 | `tf.data.experimental.AUTOTUNE`  | Optimizes performance of data pipelines by automatically tuning the parallelism.                       |
 
+**---**
+
 # TPU Detection
 
 In this notebook, **TPU (Tensor Processing Unit)** usage is integrated to accelerate deep learning model training. TPUs are specialized hardware developed by Google, optimized for performing high-throughput, low-latency matrix operations, which are common in deep learning workloads.
@@ -26,6 +28,8 @@ In this notebook, **TPU (Tensor Processing Unit)** usage is integrated to accele
 The notebook intelligently detects the presence of a TPU and, if available, initializes it using TensorFlow’s TPU strategy. This enables the model to be trained in a distributed fashion across multiple TPU cores, significantly reducing training time, especially on large datasets. If a TPU is not available, it gracefully falls back to using a single GPU or CPU.
 
 By leveraging TPUs, the notebook ensures efficient resource utilization and enhanced performance, making it well-suited for computationally intensive tasks such as particle classification in the Higgs Boson challenge.
+
+**---**
 
 # Dataset loading
 
@@ -97,23 +101,23 @@ These functions are typically used together in a TensorFlow training pipeline:
   * What keys to expect in each record
   * What type and shape each feature should have
 
----
+
 
  🧱 Structure:
 
-```python
-feature_description = {
-    'features': tf.io.FixedLenFeature([], tf.string),
-    'label': tf.io.FixedLenFeature([], tf.float32),
-}
-```
+
+  feature_description = {
+      'features': tf.io.FixedLenFeature([], tf.string),
+      'label': tf.io.FixedLenFeature([], tf.float32),
+  }
+
 
 | **Key**      | **Type**                          | **Explanation**                                                                                              |
 | ------------ | --------------------------------- | ------------------------------------------------------------------------------------------------------------ |
 | `'features'` | `FixedLenFeature([], tf.string)`  | Serialized tensor (e.g., 28 floats) stored as a string. Requires decoding with `tf.io.parse_tensor()` later. |
 | `'label'`    | `FixedLenFeature([], tf.float32)` | A single floating-point value representing the class label.                                                  |
 
----
+
 
  🔍 What is `FixedLenFeature`?
 
@@ -123,21 +127,21 @@ feature_description = {
   * `shape=[]` → a scalar
   * `dtype=tf.string` or `tf.float32`, etc.
 
----
+
 
  🔧 Why Use `tf.string` for Features?
 
 * In some datasets, especially when saving arrays/tensors, the feature vector is **pre-serialized** into a byte string for storage efficiency.
 * Later, you decode it using `tf.io.parse_tensor()` during parsing.
 
----
+
 
 # 💡 When to Customize This:
 
 * If your TFRecord contains images, audio, or multi-dimensional tensors, the `feature_description` will change accordingly.
 * For categorical data or text, you may use `tf.int64`, `tf.string`, or even `VarLenFeature`.
 
----
+**---**
 
 dataset_size = 11 million (total number of examples).
 
@@ -160,6 +164,7 @@ steps_per_execution = 256 improves TPU/GPU performance by reducing Python intera
 | **.batch(batch\_size)** | ✅ Yes                                               | ✅ Yes                                               | Groups examples into mini-batches for efficient training and evaluation.                                       |
 | **.prefetch(AUTO)**     | ✅ Yes                                               | ✅ Yes                                               | Overlaps data preparation and model execution, improving training speed and hardware utilization.              |
 
+**---**
 
 # Wide and Deep Model Architecture
 
@@ -195,6 +200,8 @@ steps_per_execution = 256 improves TPU/GPU performance by reducing Python intera
 | --------------------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
 | `keras.experimental.WideDeepModel(...)` | Combines `LinearModel` (wide) and `Model` (deep) | Merges memorization (wide) and generalization (deep) capabilities. Proven effective in structured data (e.g., Kaggle tabular tasks). |
 | `activation='sigmoid'`                  | Applies sigmoid to final output                  | Suitable for binary classification, producing output in range (0, 1).                                                                |
+
+**---**
 
 # Training
 
