@@ -35,7 +35,7 @@ The dataset is stored in TFRecord format (for TPU optimization) under a cloud st
 * Validation Files: val/*.tfrec
 
 * Test Files: test/*.tfrec (Note: test set is unlabeled)
-* 
+
 # Environment Setup
 
 * Framework: TensorFlow 2.x (with Keras API)
