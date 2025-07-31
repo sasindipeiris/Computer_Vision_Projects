@@ -22,8 +22,8 @@ The goal of this project is to:
 
 * # Libraries used
 
-* | Library / Module      | Component                         | Description / Purpose                                                                                         |
-| --------------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| Library / Module      | Component                         | Description / Purpose                                                                                         |
+|-----------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------|
 | `time`                | `time`, `sleep`                   | Used for measuring execution time and controlling flow (e.g., timed waits).                                   |
 | `gc`                  | —                                 | Python garbage collector interface for memory management.                                                     |
 | `numpy`               | `np`                              | Numerical operations on arrays, used for tensors, reshaping, etc.                                             |
@@ -49,7 +49,7 @@ The goal of this project is to:
 | `h5_to_db`            | `*`                               | Converts `.h5` feature files into COLMAP-compatible SQLite database format.                                   |
 | `metric`              | —                                 | Custom or competition-provided evaluation module for pose error metrics, matching precision, recall, etc.     |
 
-# Functions in detail
+
 
 # load_torch_image
 
