@@ -198,12 +198,6 @@ Purpose:Defines a data structure to hold per-image metadata and manages the load
 
 # Key Specialities
 
-Here’s a **point-form summary** of the **specialties and strengths** of your Image Matching Challenge notebook pipeline:
-
----
-
-###  Key Specialties of the Image Matching Challenge Notebook
-
 * **Hybrid Matching Strategy**
 
   * Combines *global descriptors* (DINOv2) for shortlist selection with *local keypoint detection* (ALIKED) and *learned matching* (LightGlue).
