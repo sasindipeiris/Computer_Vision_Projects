@@ -22,21 +22,6 @@ Data files :
   
 * submissionFileFormat.csv: list of 27124 keypoints to predict. Each row contains a RowId, ImageId, FeatureName, Location. FeatureName are "left_eye_center_x," "right_eyebrow_outer_end_y," etc. Location is what you need to predict.
 
-* # Libraries used
-
-* | **Import Statement**                                                            | **Module/Library**        | **Purpose**                                                              |
-| ------------------------------------------------------------------------------- | ------------------------- | ------------------------------------------------------------------------ |
-| `import zipfile`                                                                | `zipfile` (Python stdlib) | Extracts `.zip` files (used to load the dataset archives).               |
-| `import os`                                                                     | `os` (Python stdlib)      | Handles file paths and directory operations.                             |
-| `import pandas as pd`                                                           | `pandas`                  | Loads and manipulates CSV data for keypoints and images.                 |
-| `import numpy as np`                                                            | `numpy`                   | Performs numerical operations, array manipulation, and image formatting. |
-| `import matplotlib.pyplot as plt`                                               | `matplotlib`              | Visualizes images and predicted keypoints for evaluation.                |
-| `from xgboost import XGBRegressor`                                              | `XGBoost`                 | Predicts missing keypoints using gradient boosting regression.           |
-| `from sklearn.model_selection import train_test_split`                          | `scikit-learn`            | Splits dataset into training and validation sets.                        |
-| `from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score` | `scikit-learn`            | Evaluates regression model performance.                                  |
-| `from tensorflow import keras`                                                  | `TensorFlow`              | Provides deep learning framework for building CNNs.                      |
-| `from keras import layers`                                                      | `Keras` (via TensorFlow)  | Defines convolutional and dense layers for the neural network.           |
-
 # Data Preprocessing
 
 | **Step**                                      | **Code**                                                                                                                                                                                            | **Explanation / Reasoning**                                                                                                                                                                                                                                                                     |
@@ -253,6 +238,7 @@ On the test set:
 
 * **R² Score: 0.72**
   The model explains \~72% of the variance in the facial keypoints, indicating **strong predictive power**, especially considering the input is grayscale imagery.
+
 
 
 
